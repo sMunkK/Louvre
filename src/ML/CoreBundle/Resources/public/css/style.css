@@ -1,0 +1,61 @@
+body{
+     background-color: #000000;
+     color: #CE6D39;
+ }
+
+.well{
+    background-color: #FFEEE4;
+}
+
+.page-header{
+    padding-bottom: 25px;
+}
+
+/* Commande Billet
+ */
+
+#commandetitrebillet{
+    text-align: center;
+}
+
+#logo{
+    max-width: 100%;
+    height: auto;
+    margin-right: 10px;
+    border: black solid 1px;
+}
+
+#billet{
+    border: black solid 1px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#textbillet{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ligne{
+    margin-bottom: 10px;
+}
+
+#imgtitre{
+    max-width: 100%;
+}
+
+.ulticket{
+    min-width: 250px;
+    background-color: white;
+}
+
+.reca{
+    text-align: center;
+}

@@ -1,0 +1,15 @@
+{% extends "MLCoreBundle:Default:index.html.twig" %}
+
+{% block title %}<title>Une erreur est survenue: {{ status_text }}</title>{% endblock %}
+
+{% block body %}
+
+    <h1>Oops! Une erreur a était trouvé!</h1>
+    <h2>Le serveur indique: "{{ status_code }} {{ status_text }}".</h2>
+
+    <div>
+        Quelque chose n'a pas fonctionné correctement.
+        Envoyez-nous un email à dev@louvre.fr et faites-nous savoir comment cette erreur c'est produite. Veuillez-nous excuser pour la gène occasionnée.
+    </div>
+
+{% endblock %}

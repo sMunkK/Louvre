@@ -1,0 +1,17 @@
+services:
+    ml_core.services.calculator:
+        class: ML\CoreBundle\Services\Calculator
+
+    ml_core.services.mailer:
+        class: ML\CoreBundle\Services\Mailer
+        arguments: ['@swiftmailer.mailer', '@twig']
+
+    ml_core.validator_constraints.close_validator:
+        class: ML\CoreBundle\Validator\Constraints\CloseValidator
+        arguments: ['@doctrine']
+        tags:
+            - { name: validator.constraint_validator }
+
+#    ml_core.example:
+#        class: ML\CoreBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

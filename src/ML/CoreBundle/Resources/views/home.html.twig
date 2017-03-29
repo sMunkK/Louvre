@@ -1,0 +1,47 @@
+{% extends "MLCoreBundle:Default:index.html.twig" %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/mlcore/css/bootstrap-datepicker.min.css') }}" />
+{% endblock %}
+{% block body %}
+
+    <section class="row">
+        <div class="col-lg-12">
+                <img id="accueil" src="{{ asset('bundles/mlcore/images/acceuil.jpg') }}" class="img-rounded" style="width: 100%;"/>
+
+            <div class="col-lg-9">
+                <h3>Commander vos billets</h3>
+
+                <div class="well">
+                    {{ form(form) }}
+                </div>
+            </div>
+            <aside class="col-lg-3">
+                <h3>Tarifs et Billets</h3>
+                <div class="well">
+                    <h4>Tarifs :</h4>
+                    <p><strong>Normal</strong> à partir de 12 ans : <strong>16 €</strong>.</p>
+                    <p><strong>Enfant</strong> à partir de 4 ans et j'usqu'à 12 ans : <strong>8 €</strong> (gratuit pour les enfants de moins de 4 ans).</p>
+                    <p><strong>Senior</strong> à partir de 60 ans : <strong>12 €</strong>.</p>
+                    <p>Un tarif <strong>Réduit</strong> de <strong>10 €</strong> accordé dans certaines conditions (étudiant, employé du musée, d'un service du Ministère de la Culture, militaire...).</p>
+                    <h4>Billets :</h4>
+                    <p><strong>Journée</strong> il permet de rentrer toute la journée.</p>
+                    <p><strong>Demi-journée</strong> il ne permet pas de rentrer avant 14h00.</p>
+                </div>
+            </aside>
+
+
+        </div>
+    </section>
+    {% block script %}
+        {{ parent() }}
+        <script
+                type="text/javascript" src="{{ asset('bundles/mlcore/js/bootstrap-datepicker.min.js') }}">
+        </script>
+        <script
+                type="text/javascript" src="{{ asset('bundles/mlcore/js/bootstrap-datepicker.fr.min.js') }}">
+        </script>
+        <script
+                type="text/javascript" src="{{ asset('bundles/mlcore/js/animation.js') }}">
+        </script>
+    {% endblock %}
+ {% endblock %}

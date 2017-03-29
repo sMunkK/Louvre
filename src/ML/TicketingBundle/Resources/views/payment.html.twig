@@ -1,0 +1,53 @@
+{% extends "MLCoreBundle:Default:index.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-lg-12 reca">
+        <header col-xs-12>
+            <a href="http://www.louvre.fr/"><img src="http://mindboggles.net/assets/images/louvre_sm1.jpg" id="imgtitre"/></a>
+            <h1>Billetterie Musée du louvre</h1>
+        </header>
+
+        <section>
+            <div class="col-xs-12">
+                <p>Voici ci-dessous le récapitulatif de vos billets, un email vous sera envoyé après validation du paiement.</p>
+                <h3>La date de votre réservation: <strong class="contenu">{{ app.session.get('commande').JourVisite().format('d-m-Y') }}</strong> </h3>
+            </div>
+
+            <ul class="well col-xs-push-3 col-xs-6 col-md-6 col-lg-6 list-unstyled list-inline ulticket">
+                {% for user in app.session.get('commande').getTickets %}
+                    <span id="billet">
+                        <li><img src="http://static.wixstatic.com/media/8395e8_161f8e2626c24d5694f1e2d0c9fd009c.jpg_srz_500_500_85_22_0.50_1.20_0.00_jpg_srz" width="100px" height="100px" id="logo"></li>
+                        <span id="textbillet">
+                            <li class="ligne"><strong>Nom:</strong> <strong class="contenu">{{ user.nom }}</strong></li>
+                            <li class="ligne"><strong>Prénom:</strong> <strong class="contenu">{{ user.prenom }}</strong></li>
+                            <li class="ligne"><strong>Prix billet:</strong> <strong class="contenu">{{ user.prix }}€</strong></li>
+                        </span>
+                    </span>
+                {% endfor %}
+            </ul>
+
+            <div class="col-xs-12">
+                <h3>Montant total: <strong class="contenu">{{ app.session.get('prixNonStrip') }}€</strong></h3>
+
+                <form action="{{ path('order_checkout') }}" method="POST">
+                    <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="{{ public_key }}"
+                            data-amount="{{ prixTotal }}"
+                            data-name="Musée du Louvre"
+                            data-description="Billetterie"
+                            data-label="Payez en ligne"
+                            data-image="http://static.wixstatic.com/media/8395e8_161f8e2626c24d5694f1e2d0c9fd009c.jpg_srz_500_500_85_22_0.50_1.20_0.00_jpg_srz"
+                            data-locale="auto"
+                            data-currency="eur"
+                            data-zip-code="true">
+                    </script>
+                </form>
+            </div>
+        </section>
+    </div>
+    </div>
+{% endblock %}
+
+

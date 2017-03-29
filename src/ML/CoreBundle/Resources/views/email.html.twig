@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Billetterie du Musée du Louvre</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <style>
+                #logobillet{
+                    height: 150px;
+                    width: 150px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: black solid 1px;
+                }
+                .billet{
+                    display: flex;
+                    flex-wrap: nowrap;
+                    justify-content: flex-start;
+                    margin-left: auto;
+                    width: 500px;
+                    height: 300px;
+                    margin-right: auto;
+                    align-items: center;
+                    border: solid 1px #6E6E6E;
+                    margin-bottom: 5px;
+                }
+                .billet2{
+                    display: flex;
+                    margin-left: auto;
+                    margin-right: auto;
+                    align-items: center;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+                .textbillet{
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    margin-bottom: 15px;
+                }
+                .center{
+                    text-align: center;
+                }
+                ul{
+                    width: 600px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                .contenu{
+                    font-size: 2em;
+                }
+        </style>
+</head>
+<body class="center">
+<header>
+    <h1><a href="http://www.louvre.fr/"><img src="http://mindboggles.net/assets/images/louvre_sm1.jpg"/></a>Billetterie Musée du louvre</h1>
+</header>
+
+    <section>
+        <h2>Le musée du louvre vous remercie(s)!</h2>
+        <p>Voici ci-dessous le récapitulatif de vos billets, cette email fera preuve de votre achat et devra être présenté le jour de votre visite au musée.</p>
+        <h3>La date de votre réservation: <strong class="contenu">{{ app.session.get('commande').JourVisite().format('d-m-Y') }}</strong> </h3>
+
+        <ul>
+            {% for user in app.session.get('commande').getTickets %}
+                <li class="billet"><img src="http://static.wixstatic.com/media/8395e8_161f8e2626c24d5694f1e2d0c9fd009c.jpg_srz_500_500_85_22_0.50_1.20_0.00_jpg_srz" id="logobillet">
+                    <span class="billet2">
+                        <span class="textbillet"><strong class="textbillet">Nom Prénom:</strong> <strong class="contenu">{{ user.nom }} {{ user.prenom }}</strong></span>
+                        <span class="textbillet"><strong class="textbillet">Prix billet:</strong> <strong class="contenu">{{ user.prix }}€</strong></span>
+                        <span class="textbillet"><strong class="textbillet">Code réservation:</strong> <strong class="contenu">{{ code }}</strong></span>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h3>Montant total: <strong class="contenu">{{ app.session.get('prixNonStrip') }}€</strong></h3>
+
+    </section>
+</body>
+</html>

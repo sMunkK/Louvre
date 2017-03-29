@@ -1,0 +1,19 @@
+ml_core_homepage:
+    path:     /
+    defaults: { _controller: MLCoreBundle:Core:index }
+
+ml_ticketing_homepage:
+    path: /ticket
+    defaults: {_controller: MLCoreBundle:Core:ticket}
+
+ml_ticketing_payment:
+    path: /payment
+    defaults: {_controller: MLCoreBundle:Core:payment}
+
+order_checkout:
+    path: /checkout
+    defaults: {_controller: MLCoreBundle:Core:checkout}
+
+ml_test:
+    path: /test
+    defaults: {_controller: MLCoreBundle:Core:test}
